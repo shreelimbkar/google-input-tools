@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Google Input tools for website</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+        <script type="text/javascript">
+          // Load the Google Transliteration API
+
+            google.load("elements", "1", {
+                packages: "transliteration"
+            });
+
+            function onLoad() {
+                var options = {
+                    sourceLanguage: 'en',
+                    destinationLanguage: ['mr', 'hi','kn','ta','te'],
+                    shortcutKey: 'ctrl+g',
+                    transliterationEnabled: true
+                };
+                // Create an instance on TransliterationControl with the required
+                // options.
+                
+                var control = new google.elements.transliteration.TransliterationControl(options);
+                // Enable transliteration in the textfields with the given ids.
+
+                var ids = [ "language", "editor1" ];
+                control.makeTransliteratable(ids);
+                // Show the transliteration control which can be used to toggle between
+                // English and Hindi and also choose other destination language.
+
+                // control.showControl('translControl');
+            }
+
+            google.setOnLoadCallback(onLoad);
+
+        </script>
+	</head>
+	<body>
+        <h2>Google Input Tools for website.</h2>
+        <h4>Type in below textarea</h4>
+        <form>
+            <div>
+                <textarea name="ta"  rows="6"  id="language" cols="6" style="width:600px;height:218px" ></textarea>
+            <div>
+                <small>Use ctrl+g to change the language (Marathi to English and vice versa.</small>
+
+            <h4>Using CKEditor</h4>
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+        </form>
+        <script>
+                CKEDITOR.replace( 'editor1' );
+        </script>
+	</body>
+</html>
