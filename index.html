@@ -8,7 +8,6 @@
         <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
         <script type="text/javascript">
           // Load the Google Transliteration API
-
             google.load("elements", "1", {
                 packages: "transliteration"
             });
@@ -26,17 +25,25 @@
                 var control = new google.elements.transliteration.TransliterationControl(options);
                 // Enable transliteration in the textfields with the given ids.
 
-                var ids = [ "language", "editor1" ];
+                var ids = [ "language", "mydiv" ];
                 control.makeTransliteratable(ids);
                 // Show the transliteration control which can be used to toggle between
                 // English and Hindi and also choose other destination language.
 
                 // control.showControl('translControl');
             }
-
             google.setOnLoadCallback(onLoad);
-
         </script>
+        <style>
+            body {
+                padding: 10px 10px 50px 10px;
+                margin: 0 auto;
+            }
+            #mydiv {
+                border: 1px solid #ccc;
+                padding: 10px 10px;
+            }
+        </style>
 	</head>
 	<body>
         <h2>Google Input Tools for website.</h2>
@@ -52,6 +59,10 @@
                 This is my textarea to be replaced with CKEditor.
             </textarea>
         </form>
+        <h2>Inline Div with Google Input and CKEditor</h2>
+        <div contenteditable="true" id="mydiv">
+            
+        </div>
         <script>
                 CKEDITOR.replace( 'editor1' );
         </script>
